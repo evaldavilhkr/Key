@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO SENSI - Free Key Generator</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 255, 102, 0.2);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+            border: 1px solid #333;
+        }
+        h2 {
+            color: #00ff66;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #bbb;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .key-box {
+            background: #252525;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: #00ff66;
+            margin-bottom: 15px;
+            border: 1px dashed #00ff66;
+            word-break: break-all;
+        }
+        .btn {
+            background: #00ff66;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background: #00cc52;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>CEO SENSI</h2>
+        <p>Get your unique 1-day free activation key below:</p>
+
+        <div id="keySection">
+            <div class="key-box" id="keyDisplay">Click below to generate key</div>
+            <button class="btn" id="generateBtn" onclick="getNextKey()">GET FREE KEY</button>
+        </div>
+
+        <div id="finishedSection" class="hidden">
+            <p style="color: #ff5555; font-weight: bold;">❌ All 20 Free Keys have been claimed for today!</p>
+            <a href="https://wa.me/8801717724407?text=Hello%20CEO%20SENSI,%20all%20free%20keys%20are%20finished.%20I%20want%20to%20get%20a%20key!" class="whatsapp-btn" target="_blank">📞 Contact Admin via WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        const keys = [
+            "CEO-7X9K-2M4P", "CEO-8N1Q-9L3V", "CEO-4B7W-5R8Z", "CEO-1Y6T-3X9D", "CEO-9A2C-8V5K",
+            "CEO-5M8E-7N1Q", "CEO-3Z4P-9R2W", "CEO-8K1V-6X5T", "CEO-2L9D-4A7C", "CEO-7R5Z-1Y8M",
+            "CEO-6V3K-9B2E", "CEO-4N8Q-5X1P", "CEO-1W7T-3R9D", "CEO-9M2Z-8A5K", "CEO-5C8E-7V1Q",
+            "CEO-3P4Y-9X2W", "CEO-8R1D-6K5T", "CEO-2Z9A-4V7C", "CEO-7B5E-1N8M", "CEO-6X3Q-9R2K"
+        ];
+
+        function getNextKey() {
+            let currentIndex = parseInt(localStorage.getItem('ceo_key_index') || '0');
+
+            if (currentIndex < keys.length) {
+                let assignedKey = keys[currentIndex];
+                document.getElementById('keyDisplay').innerText = assignedKey;
+                
+                // পরবর্তী ক্লিকের জন্য ইনডেক্স বাড়িয়ে সেভ করা
+                localStorage.setItem('ceo_key_index', currentIndex + 1);
+                
+                document.getElementById('generateBtn').innerText = "COPY KEY";
+                document.getElementById('generateBtn').setAttribute("onclick", "copyKey()");
+            } else {
+                showFinishedState();
+            }
+        }
+
+        function copyKey() {
+            let keyText = document.getElementById('keyDisplay').innerText;
+            navigator.clipboard.writeText(keyText).then(() => {
+                alert("Key copied to clipboard!");
+            });
+        }
+
+        window.onload = function() {
+            let currentIndex = parseInt(localStorage.getItem('ceo_key_index') || '0');
+            if (currentIndex >= keys.length) {
+                showFinishedState();
+            }
+        }
+
+        function showFinishedState() {
+            document.getElementById('keySection').classList.add('hidden');
+            document.getElementById('finishedSection').classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
