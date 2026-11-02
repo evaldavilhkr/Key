@@ -24,7 +24,7 @@ if [ "$(id -u)" != "0" ]; then
   exit 1
 fi
 
-ERROR_MSG=$(insmod ./4.19.133.ko 2>&1)
+ERROR_MSG=$(insmod ./4.14.264.ko 2>&1)
 if [ $? -eq 0 ]; then
   echo -e "${YELLOW}操作成功:${NC} 内核模块已经成功加载。"
 else
