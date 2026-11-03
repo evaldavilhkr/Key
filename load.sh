@@ -15,7 +15,7 @@ if [ $status -eq 0 ]; then
     echo "[✓] Kernel module successfully loaded!"
 elif echo "$output" | grep -q "File exists"; then
     # \033[1;31m হলো টার্মিনালের জন্য লাল (Red) রঙের কোড এবং \033[0m দিয়ে কালার রিসেট করা হয়েছে
-    echo "\[!] Kernel module is ALREADY LOADED!\033[0m"
+    echo "\[!] Kernel module is ALREADY LOADED!"
 else
-    echo "\[✘] Failed to load kernel module: $output\033[0m"
+    echo "\[✘] Failed to load kernel module: $output"
 fi
