@@ -1,9 +1,6 @@
 #!/system/bin/sh
 
-# ১. স্ক্রিপ্টটি বর্তমানে যে ফোল্ডারে আছে, সেই ডিরেক্টরি স্বয়ংক্রিয়ভাবে বের করা
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-
-# ২. একই ফোল্ডারে থাকা .ko ফাইলের পাথ অটো-ডিটেক্ট করা
 KO_PATH="$SCRIPT_DIR/4.14.264.ko"
 
 if [ ! -f "$KO_PATH" ]; then
@@ -17,7 +14,8 @@ status=$?
 if [ $status -eq 0 ]; then
     echo "[✓] Kernel module successfully loaded!"
 elif echo "$output" | grep -q "File exists"; then
-    echo "[!] Kernel module is ALREADY LOADED!"
+    # \033[1;31m হলো টার্মিনালের জন্য লাল (Red) রঙের কোড এবং \033[0m দিয়ে কালার রিসেট করা হয়েছে
+    echo "\033[1;31m[!] Kernel module is ALREADY LOADED!\033[0m"
 else
-    echo "[✘] Failed to load kernel module: $output"
+    echo "\033[1;31m[✘] Failed to load kernel module: $output\033[0m"
 fi
